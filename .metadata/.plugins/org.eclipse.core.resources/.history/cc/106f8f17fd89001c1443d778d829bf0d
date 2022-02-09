@@ -1,0 +1,20 @@
+package model;
+import tests.Node;
+
+public class ListUtilities {
+	
+	public Node<String> getAllPrefixes(Node<Integer> head, int low, int upper) {
+		
+		Node<Integer> current = head;
+		Node<String> listUtilities = new Node<>();
+		
+		while (head.getNext() != null) {
+			if () {
+				
+			}
+		}
+		
+		return ;
+	}
+	
+}

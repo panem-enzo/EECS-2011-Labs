@@ -1,0 +1,10 @@
+package model;
+package tests;
+
+public class ListUtilities {
+
+	public Node<String> getAllPrefixes() {
+		
+	}
+	
+}

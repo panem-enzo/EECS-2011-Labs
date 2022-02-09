@@ -1,0 +1,10 @@
+package model;
+import model.Node;
+
+public class ListUtilities {
+
+	public Node<String> getAllPrefixes() {
+		
+	}
+	
+}

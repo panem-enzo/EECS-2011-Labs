@@ -1,0 +1,17 @@
+package model;
+import tests.Node;
+
+public class ListUtilities {
+	
+	public Node<String> getAllPrefixes(Node<Integer> input, int start, int end) {
+		
+		Node<Integer> head = input.getElement();
+		
+		while () {
+			
+		}
+		
+		return null;
+	}
+	
+}

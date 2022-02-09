@@ -2,6 +2,7 @@ package tests;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import model.*;
 
 /*
  * Study carefully the test methods below. They suggest:

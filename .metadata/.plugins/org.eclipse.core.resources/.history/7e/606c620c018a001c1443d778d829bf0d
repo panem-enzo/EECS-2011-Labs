@@ -1,0 +1,39 @@
+package model;
+import tests.Node;
+
+public class ListUtilities {
+	
+	public Node<String> getAllPrefixes(Node<Integer> head, int low, int upper) {
+		
+		Node<Integer> current = head;
+		
+		for (int i=0; head.getNext() != null; i ++) {
+			if (i=0) {
+				
+			}
+		}
+		
+		while (head.getNext() != null) {
+				
+				if ()
+			
+				Node<String> prefix = new Node<>());
+		}
+		
+		return prefix;
+	}
+	
+//	private int getSize(Node<Integer> head) {
+//		
+//		Node<Integer> current = head;
+//		int size = 0;
+//		
+//		while (current.getNext() != null) {
+//			current = current.getNext();
+//			size ++;
+//		}
+//		
+//		return size;
+//	}
+	
+}

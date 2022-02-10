@@ -5,47 +5,48 @@ public class ListUtilities {
 
 	public Node<String> getAllPrefixes(Node<Integer> input, int low, int upper) {
 
-		Node<String> allPrefixesHead = getAllPrefixesHelper(input);
-		
-		return allPrefixesHead;
+		Node<Integer> headInt = input;
+		Node<Integer> currentInt = headInt;
+		Node<String> prefix = null;
+		Node<String> currentPrefix = null;
 
-	}
-
-	private Node<String> getAllPrefixesHelper(Node<Integer> input) {
-
-		Node<Integer> currentHead = input;
-		Node<Integer> current = currentHead;
-		Node<String> prefixHead = new Node<>("["+current.getElement()+"]", null);
-		Node<String> prefix = prefixHead;
-
-		int i = 1;
+		int i = 0, length = 0;
 		int size = getSize(input);
+		boolean foundHead = false;
 
-		if (size != 1) {
-
-			while (i < size) {
-
-				String str = "[";
-				current = currentHead;
-				for (int j=0; j < i; j++) {
-					str += current.getElement() + ", ";
-					current = current.getNext();
-				}
-				str += current.getElement() + "]";
-
-				prefix.setNext(new Node<>(str, null));
-				prefix = prefix.getNext();
-				i++;
-
+		while (i < size) {
+			
+			String str = "[";
+			currentInt = headInt;
+			
+			for (int j=0; j < i; j++) {
+				str += currentInt.getElement() + ", ";
+				currentInt = currentInt.getNext();
 			}
+			
+			str += currentInt.getElement() + "]";
+			length ++;
+			
+			if (length >= low && length <= upper) {
+				
+				if (!foundHead) {
+					prefix = new Node<>(str, null);
+					currentPrefix = prefix;
+					foundHead = true;
+				} else {
+					currentPrefix.setNext(new Node<>(str, null));
+					currentPrefix = currentPrefix.getNext();
+				}
+				
+			}
+			i++;
 
 		}
-
-		prefix = prefixHead;
 
 		return prefix;
 
 	}
+
 	private int getSize(Node<Integer> input) {
 
 		Node<Integer> current = input;

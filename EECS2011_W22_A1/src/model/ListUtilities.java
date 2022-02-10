@@ -3,42 +3,39 @@ import tests.Node;
 
 public class ListUtilities {
 	
-	public Node<String> getAllPrefixes(Node<Integer> head, int low, int upper) {
+	public Node<String> getAllPrefixes(Node<Integer> input, int low, int upper) {
 		
-		Node<Integer> current = head;
+		Node<Integer> current = input;
+		Node<String> prefixHead = new Node<>("["+current+"]", null);
+		Node<String> prefix = prefixHead;
 		
-		Node<String> prefix = null;
+		int i = 1;
+		int size = getSize(input);
 		
-		while (head.getNext() != null) {
+		while (input.getNext() != null) {
 			
-			if () {
-				
-			} else {
-				prefix.setElement("[" + current + "]");
+			for (int j=0; j < i; j++) {
+				prefix.setNext(new Node<>());
 			}
+			
+			i++;
 			
 		}
 		
 		return prefix;
 	}
 	
-	private int validPrefix() {
+	private int getSize(Node<Integer> input) {
 		
+		Node<Integer> current = input;
+		int size = 0;
 		
-		return 0;
+		while (current.getNext() != null) {
+			current = current.getNext();
+			size ++;
+		}
+		
+		return size;
 	}
-	
-//	private int getSize(Node<Integer> head) {
-//		
-//		Node<Integer> current = head;
-//		int size = 0;
-//		
-//		while (current.getNext() != null) {
-//			current = current.getNext();
-//			size ++;
-//		}
-//		
-//		return size;
-//	}
 	
 }

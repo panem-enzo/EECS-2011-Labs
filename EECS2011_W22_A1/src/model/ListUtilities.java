@@ -5,9 +5,9 @@ public class ListUtilities {
 
 	public Node<String> getAllPrefixes(Node<Integer> input, int low, int upper) {
 
-		Node<String> allPrefixes = getAllPrefixesHelper(input);
+		Node<String> allPrefixesHead = getAllPrefixesHelper(input);
 		
-		return allPrefixes;
+		return allPrefixesHead;
 
 	}
 
@@ -44,7 +44,7 @@ public class ListUtilities {
 		prefix = prefixHead;
 
 		return prefix;
-		
+
 	}
 	private int getSize(Node<Integer> input) {
 

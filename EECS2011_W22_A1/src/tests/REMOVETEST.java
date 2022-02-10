@@ -24,6 +24,11 @@ public class REMOVETEST {
 		assertEquals("[23, 46, 19, -9]", output.getNext().getNext().getNext().getElement()); 
 		assertNull(output.getNext().getNext().getNext().getNext());
 		
+		Node<String> output2 = util.getAllPrefixes(input, 2, 3);
+		
+		assertEquals("[23, 46]", output2.getElement());
+		assertEquals("[23, 46, 19]", output2.getNext().getElement()); 
+		assertNull(output2.getNext().getNext());
 	}
 
 }

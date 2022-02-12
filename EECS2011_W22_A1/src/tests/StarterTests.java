@@ -133,122 +133,122 @@ public class StarterTests {
 		assertNull(output.getNext()); 
 	}
 	
-//	@Test
-//	public void test_getMergedList_01() {
-//		ListUtilities util = new ListUtilities();
-//		Node<Integer> leftChain = 
-//			new Node<>(1, 
-//			new Node<>(3, 
-//			new Node<>(5, 
-//			new Node<>(7, 
-//			new Node<>(9, null)))));
-//		Node<Integer> rightChain = 
-//			new Node<>(2, 
-//			new Node<>(3, 
-//			new Node<>(5, 
-//			new Node<>(6, 
-//			new Node<>(8, null)))));
-//		
-//		/* 
-//		 * Merging two non-empty chains, each sorted in a non-descending order, 
-//		 * 	results in a new chain containing elements from both chains and sorted in a non-descending order.
-//		 * 
-//		 * Assumption: 
-//		 * 	- Each of the input chains to the getMergedChain method, if not null, is sorted in a non-descending order. 
-//		 */  
-//		Node<Integer> output = util.getMergedChain(leftChain, rightChain);
-//		
-//		assertTrue(1 == output.getElement());
-//		assertTrue(2 == output.getNext().getElement());
-//		assertTrue(3 == output.getNext().getNext().getElement());
-//		assertTrue(3 == output.getNext().getNext().getNext().getElement());
-//		assertTrue(5 == output.getNext().getNext().getNext().getNext().getElement());
-//		assertTrue(5 == output.getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertTrue(6 == output.getNext().getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertTrue(7 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertTrue(8 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertTrue(9 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
-//		/*
-//		 * The input and output chains do not share any node references in common.
-//		 * i.e., there is no reference aliasing.
-//		 */
-//		assertTrue(noAliasing(output, leftChain));
-//		assertTrue(noAliasing(output, rightChain));
-//	}
-//	 
-//	@Test
-//	public void test_getMergedList_02() {
-//		ListUtilities util = new ListUtilities();
-//		Node<Integer> leftChain = null; /* empty chain of nodes */
-//		Node<Integer> rightChain = null; /* empty chain of nodes */
-//		
-//		/* Merging two empty chains results in another empty chain. */
-//		assertNull(null, util.getMergedChain(leftChain, rightChain));
-//	}
-//	
-//	@Test
-//	public void test_getMergedList_03() {
-//		ListUtilities util = new ListUtilities();
-//		Node<Integer> leftChain = 
-//			new Node<>(1, 
-//			new Node<>(3, 
-//			new Node<>(5, 
-//			new Node<>(7, 
-//			new Node<>(9, null)))));
-//		Node<Integer> rightChain = null; /* empty chain of nodes */
-//		
-//		/* Merging a non-empty chain and an empty chain results in elements drawn from the non-empty chain. */  
-//		Node<Integer> output = util.getMergedChain(leftChain, rightChain);
-//		
-//		assertTrue(1 == output.getElement());
-//		assertTrue(3 == output.getNext().getElement());
-//		assertTrue(5 == output.getNext().getNext().getElement());
-//		assertTrue(7 == output.getNext().getNext().getNext().getElement());
-//		assertTrue(9 == output.getNext().getNext().getNext().getNext().getElement());
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext());
-//		/*
-//		 * The input and output chains do not share any node references in common.
-//		 * i.e., there is no reference aliasing.
-//		 */
-//		assertTrue(noAliasing(output, leftChain));
-//	}
-//	
-//	@Test
-//	public void test_getMergedList_04() {
-//		ListUtilities util = new ListUtilities();
-//		Node<Integer> leftChain = null; /* empty chain of nodes */
-//		Node<Integer> rightChain = 
-//			new Node<>(2, 
-//			new Node<>(3, 
-//			new Node<>(5, 
-//			new Node<>(6, 
-//			new Node<>(8, null)))));
-//		
-//		/* Merging a non-empty chain and an empty chain results in elements drawn from the non-empty chain. */  
-//		Node<Integer> output = util.getMergedChain(leftChain, rightChain);
-//		
-//		assertTrue(2 == output.getElement());
-//		assertTrue(3 == output.getNext().getElement());
-//		assertTrue(5 == output.getNext().getNext().getElement());
-//		assertTrue(6 == output.getNext().getNext().getNext().getElement());
-//		assertTrue(8 == output.getNext().getNext().getNext().getNext().getElement());
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext());
-//		/*
-//		 * The input and output chains do not share any node references in common.
-//		 * i.e., there is no reference aliasing.
-//		 */
-//		assertTrue(noAliasing(output, rightChain));
-//	}
-//	
-//	/*
-//	 * Jackie's suggestions for testing further: 
-//	 * 	As you will also be graded with additional tests, you may want to write more test methods to check cases where, 
-//	 * 	e.g., 
-//	 * 		1. One input chain is much longer than the other.
-//	 * 		2. One input chain contain values larger than all those contained in the other chain.
-//	 */
-//	
+	@Test
+	public void test_getMergedList_01() {
+		ListUtilities util = new ListUtilities();
+		Node<Integer> leftChain = 
+			new Node<>(1, 
+			new Node<>(3, 
+			new Node<>(5, 
+			new Node<>(7, 
+			new Node<>(9, null)))));
+		Node<Integer> rightChain = 
+			new Node<>(2, 
+			new Node<>(3, 
+			new Node<>(5, 
+			new Node<>(6, 
+			new Node<>(8, null)))));
+		
+		/* 
+		 * Merging two non-empty chains, each sorted in a non-descending order, 
+		 * 	results in a new chain containing elements from both chains and sorted in a non-descending order.
+		 * 
+		 * Assumption: 
+		 * 	- Each of the input chains to the getMergedChain method, if not null, is sorted in a non-descending order. 
+		 */  
+		Node<Integer> output = util.getMergedChain(leftChain, rightChain);
+		
+		assertTrue(1 == output.getElement());
+		assertTrue(2 == output.getNext().getElement());
+		assertTrue(3 == output.getNext().getNext().getElement());
+		assertTrue(3 == output.getNext().getNext().getNext().getElement());
+		assertTrue(5 == output.getNext().getNext().getNext().getNext().getElement());
+		assertTrue(5 == output.getNext().getNext().getNext().getNext().getNext().getElement());
+		assertTrue(6 == output.getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		assertTrue(7 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		assertTrue(8 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		assertTrue(9 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
+		/*
+		 * The input and output chains do not share any node references in common.
+		 * i.e., there is no reference aliasing.
+		 */
+		assertTrue(noAliasing(output, leftChain));
+		assertTrue(noAliasing(output, rightChain));
+	}
+	 
+	@Test
+	public void test_getMergedList_02() {
+		ListUtilities util = new ListUtilities();
+		Node<Integer> leftChain = null; /* empty chain of nodes */
+		Node<Integer> rightChain = null; /* empty chain of nodes */
+		
+		/* Merging two empty chains results in another empty chain. */
+		assertNull(null, util.getMergedChain(leftChain, rightChain));
+	}
+	
+	@Test
+	public void test_getMergedList_03() {
+		ListUtilities util = new ListUtilities();
+		Node<Integer> leftChain = 
+			new Node<>(1, 
+			new Node<>(3, 
+			new Node<>(5, 
+			new Node<>(7, 
+			new Node<>(9, null)))));
+		Node<Integer> rightChain = null; /* empty chain of nodes */
+		
+		/* Merging a non-empty chain and an empty chain results in elements drawn from the non-empty chain. */  
+		Node<Integer> output = util.getMergedChain(leftChain, rightChain);
+		
+		assertTrue(1 == output.getElement());
+		assertTrue(3 == output.getNext().getElement());
+		assertTrue(5 == output.getNext().getNext().getElement());
+		assertTrue(7 == output.getNext().getNext().getNext().getElement());
+		assertTrue(9 == output.getNext().getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext().getNext());
+		/*
+		 * The input and output chains do not share any node references in common.
+		 * i.e., there is no reference aliasing.
+		 */
+		assertTrue(noAliasing(output, leftChain));
+	}
+	
+	@Test
+	public void test_getMergedList_04() {
+		ListUtilities util = new ListUtilities();
+		Node<Integer> leftChain = null; /* empty chain of nodes */
+		Node<Integer> rightChain = 
+			new Node<>(2, 
+			new Node<>(3, 
+			new Node<>(5, 
+			new Node<>(6, 
+			new Node<>(8, null)))));
+		
+		/* Merging a non-empty chain and an empty chain results in elements drawn from the non-empty chain. */  
+		Node<Integer> output = util.getMergedChain(leftChain, rightChain);
+		
+		assertTrue(2 == output.getElement());
+		assertTrue(3 == output.getNext().getElement());
+		assertTrue(5 == output.getNext().getNext().getElement());
+		assertTrue(6 == output.getNext().getNext().getNext().getElement());
+		assertTrue(8 == output.getNext().getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext().getNext());
+		/*
+		 * The input and output chains do not share any node references in common.
+		 * i.e., there is no reference aliasing.
+		 */
+		assertTrue(noAliasing(output, rightChain));
+	}
+	
+	/*
+	 * Jackie's suggestions for testing further: 
+	 * 	As you will also be graded with additional tests, you may want to write more test methods to check cases where, 
+	 * 	e.g., 
+	 * 		1. One input chain is much longer than the other.
+	 * 		2. One input chain contain values larger than all those contained in the other chain.
+	 */
+	
 //	@Test
 //	public void test_getInterleavingArithmeticFibonacciSeq_01a() {
 //		ListUtilities util = new ListUtilities();

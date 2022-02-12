@@ -47,6 +47,13 @@ public class ListUtilities {
 
 	}
 
+	public Node<Integer> getMergedChain(Node<Integer> leftChain, Node<Integer> rightChain) {
+		
+		
+		
+		return null;
+	}
+	
 	private int getSize(Node<Integer> input) {
 
 		Node<Integer> current = input;

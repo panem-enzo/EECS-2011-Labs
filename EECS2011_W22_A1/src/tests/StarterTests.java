@@ -500,18 +500,18 @@ public class StarterTests {
 //	 * i.e., The reference of each node in chain 1 (starting at `n1`)
 //	 * 			is not equal to the reference of any node in chain 2 (starting at `n2`).
 //	 */
-//	private <E> boolean noAliasing(Node<E> n1, Node<E> n2) {
-//		Node<E> current1 = n1;
-//		Node<E> current2 = n2;
-//		boolean found = false;
-//		while(current1 != null && !found) {
-//			while(current2 != null && !found) {
-//				found = current1 == current2;
-//				current2 = current2.getNext();
-//			}
-//			current1 = current1.getNext();
-//			current2 = n2;
-//		}
-//		return !found;
-//	}
+	private <E> boolean noAliasing(Node<E> n1, Node<E> n2) {
+		Node<E> current1 = n1;
+		Node<E> current2 = n2;
+		boolean found = false;
+		while(current1 != null && !found) {
+			while(current2 != null && !found) {
+				found = current1 == current2;
+				current2 = current2.getNext();
+			}
+			current1 = current1.getNext();
+			current2 = n2;
+		}
+		return !found;
+	}
 }

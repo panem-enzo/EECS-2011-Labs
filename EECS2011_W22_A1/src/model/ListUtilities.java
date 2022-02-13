@@ -246,6 +246,70 @@ public class ListUtilities {
 
 		return interleaveHead;
 	}
+	
+	public Node<String> getGroupedStrings(Node<String> input, int m, int n) {
+		
+		if (input == null) {
+			return null;
+		}
+		
+		Node<String> head = input;
+		Node<String> output = null;
+		
+		//Creating Group 1, 2, 3
+		
+		Node<String> groupOneHead = null;
+		Node<String> groupOne = null;
+		boolean oneInit = false;
+		
+		Node<String> groupTwoHead = null;
+		Node<String> groupTwo = null;
+		boolean twoInit = false;
+		
+		Node<String> groupThreeHead = null;
+		Node<String> groupThree = null;
+		boolean threeInit = false;
+		
+		while (input != null) {
+			if (input.getElement().length() < m) {
+				if (!oneInit) {
+					groupOneHead = new Node<>(input.getElement(),null);
+					groupOne = groupOneHead;
+					oneInit = true;
+				} else {
+					groupOne.setNext(new Node<>(input.getElement(), null));
+					groupOne = groupOne.getNext();
+				}
+				input = input.getNext();
+			} else if (input.getElement().length() >= m && input.getElement().length() < n) {
+				if (!twoInit) {
+					groupTwoHead = new Node<>(input.getElement(),null);
+					groupTwo = groupTwoHead;
+					twoInit = true;
+				} else {
+					groupTwo.setNext(new Node<>(input.getElement(), null));
+					groupTwo = groupTwo.getNext();
+				}
+				input = input.getNext();
+			} else if (input.getElement().length() >= n) {
+				if (!threeInit) {
+					groupThreeHead = new Node<>(input.getElement(),null);
+					groupThree = groupThreeHead;
+					threeInit = true;
+				} else {
+					groupThree.setNext(new Node<>(input.getElement(), null));
+					groupThree = groupThree.getNext();
+				}
+				input = input.getNext();
+			}
+		}
+		
+		output = groupOneHead;
+		groupOne.setNext(groupTwoHead);
+		groupTwo.setNext(groupThreeHead);
+		
+		return output;
+	}
 
 	private int getSize(Node<Integer> input) {
 

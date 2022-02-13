@@ -413,77 +413,77 @@ public class StarterTests {
 //	 * 		1. The arithmetic sequence is much longer than the Fibonacci sequence.
 //	 * 		2. The Fibonacci sequence is much longer than the Arithmetic sequence.
 //	 */
-//	
-//	@Test
-//	public void test_getGroupedStrings_01() {
-//		ListUtilities util = new ListUtilities();
-//		
-//		Node<String> input = 
-//			new Node<>("vwxyzj", 
-//			new Node<>("xy", 
-//			new Node<>("ghic", 
-//			new Node<>("pqrstu", 
-//			new Node<>("def", 
-//			new Node<>("bc", 
-//			new Node<>("a", 
-//			new Node<>("", null))))))));
-//		/*
-//		 * Calling getGroupedStrings(input, m, n) returns a chain of nodes 
-//		 * 	which groups all elements from the input chain as follows, from left to right:
-//		 * 	Group 1: strings whose lengths are less than m
-//		 *  Group 2: strings whose lengths are greater than or equal to m and less than n
-//		 *  Group 3: strings whose lengths are greater than or equal to n
-//		 * 
-//		 * Requirements:
-//		 * 	- The input and output chains are equally long.
-//		 * 	- Each group in the output chain preserves the order in which its elements appear in the input chain.
-//		 */
-//		
-//		Node<String> output = util.getGroupedStrings(input, 2, 4); 
-//		
-//		/* 
-//		 * Group 1: strings from the input chain whose lengths are 
-//		 * 	less than 2 (i.e., 0, 1) 
-//		 */
-//		assertEquals("a"		, output.getElement());
-//		assertEquals(""			, output.getNext().getElement());
-//		/* 
-//		 * Group 2: strings from the input chain whose lengths are 
-//		 * 	greater than or equal to 2 and less than 4 (i.e., 2, 3) 
-//		 */
-//		assertEquals("xy"		, output.getNext().getNext().getElement());
-//		assertEquals("def"		, output.getNext().getNext().getNext().getElement());
-//		assertEquals("bc"		, output.getNext().getNext().getNext().getNext().getElement());
-//		/* 
-//		 * Group 3: strings from the input chain whose lengths are 
-//		 * 	greater than or equal to 4 (i.e., 4, 5, ...) 
-//		 */
-//		assertEquals("vwxyzj"	, output.getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertEquals("ghic"		, output.getNext().getNext().getNext().getNext().getNext().getNext().getElement());
-//		assertEquals("pqrstu"	, output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
-//		
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
-//		
-//		/*
-//		 * The input and output chains do not share any node references in common.
-//		 * i.e., there is no reference aliasing.
-//		 */
-//		assertTrue(noAliasing(input, output));
-//	}
-//	
-//	@Test
-//	public void test_getGroupedStrings_02() {
-//		ListUtilities util = new ListUtilities();
-//		
-//		Node<String> input = null;
-//		Node<String> output = util.getGroupedStrings(input, 2, 4); 
-//		
-//		/*
-//		 * Given that the input chain contains no strings, so does the output chain. 
-//		 */
-//		assertNull(output);
-//	}
-//	
+	
+	@Test
+	public void test_getGroupedStrings_01() {
+		ListUtilities util = new ListUtilities();
+		
+		Node<String> input = 
+			new Node<>("vwxyzj", 
+			new Node<>("xy", 
+			new Node<>("ghic", 
+			new Node<>("pqrstu", 
+			new Node<>("def", 
+			new Node<>("bc", 
+			new Node<>("a", 
+			new Node<>("", null))))))));
+		/*
+		 * Calling getGroupedStrings(input, m, n) returns a chain of nodes 
+		 * 	which groups all elements from the input chain as follows, from left to right:
+		 * 	Group 1: strings whose lengths are less than m
+		 *  Group 2: strings whose lengths are greater than or equal to m and less than n
+		 *  Group 3: strings whose lengths are greater than or equal to n
+		 * 
+		 * Requirements:
+		 * 	- The input and output chains are equally long.
+		 * 	- Each group in the output chain preserves the order in which its elements appear in the input chain.
+		 */
+		
+		Node<String> output = util.getGroupedStrings(input, 2, 4); 
+		
+		/* 
+		 * Group 1: strings from the input chain whose lengths are 
+		 * 	less than 2 (i.e., 0, 1) 
+		 */
+		assertEquals("a"		, output.getElement());
+		assertEquals(""			, output.getNext().getElement());
+		/* 
+		 * Group 2: strings from the input chain whose lengths are 
+		 * 	greater than or equal to 2 and less than 4 (i.e., 2, 3) 
+		 */
+		assertEquals("xy"		, output.getNext().getNext().getElement());
+		assertEquals("def"		, output.getNext().getNext().getNext().getElement());
+		assertEquals("bc"		, output.getNext().getNext().getNext().getNext().getElement());
+		/* 
+		 * Group 3: strings from the input chain whose lengths are 
+		 * 	greater than or equal to 4 (i.e., 4, 5, ...) 
+		 */
+		assertEquals("vwxyzj"	, output.getNext().getNext().getNext().getNext().getNext().getElement());
+		assertEquals("ghic"		, output.getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		assertEquals("pqrstu"	, output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		
+		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
+		
+		/*
+		 * The input and output chains do not share any node references in common.
+		 * i.e., there is no reference aliasing.
+		 */
+		assertTrue(noAliasing(input, output));
+	}
+	
+	@Test
+	public void test_getGroupedStrings_02() {
+		ListUtilities util = new ListUtilities();
+		
+		Node<String> input = null;
+		Node<String> output = util.getGroupedStrings(input, 2, 4); 
+		
+		/*
+		 * Given that the input chain contains no strings, so does the output chain. 
+		 */
+		assertNull(output);
+	}
+	
 //	/*
 //	 * Jackie's suggestions for testing further: 
 //	 * 	As you will also be graded with additional tests, you may want to write more test methods to check cases where, 

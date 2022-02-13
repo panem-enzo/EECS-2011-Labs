@@ -10,44 +10,43 @@ public class REMOVETEST {
 
 	@Test
 	public void test() {
-//		ListUtilities util = new ListUtilities();
-//		Node<Integer> input = 
-//			new Node<>(23, 
-//			new Node<>(46, 
-//			new Node<>(19, 
-//			new Node<>(-9, null))));
-//		
-//		Node<String> output = util.getAllPrefixes(input, 1, 4);
-//		
-//		assertEquals("[23]", output.getElement());
-//		assertEquals("[23, 46]", output.getNext().getElement());
-//		assertEquals("[23, 46, 19]", output.getNext().getNext().getElement());
-//		assertEquals("[23, 46, 19, -9]", output.getNext().getNext().getNext().getElement()); 
-//		assertNull(output.getNext().getNext().getNext().getNext());
-//		
-//		Node<String> output2 = util.getAllPrefixes(input, 2, 3);
-//		
-//		assertEquals("[23, 46]", output2.getElement());
-//		assertEquals("[23, 46, 19]", output2.getNext().getElement()); 
-//		assertNull(output2.getNext().getNext());
-	
+
 		ListUtilities util = new ListUtilities();
-		/*
-		 * Get a sequence interleaving elements from:
-		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
-		 * 	- A Fibonacci sequence of size 5.
-		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
-		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
+
+		Node<String> input = 
+				new Node<>("vwxyzj", 
+						new Node<>("xy", 
+								new Node<>("ghic", 
+										new Node<>("pqrstu", 
+												new Node<>("def", 
+														new Node<>("bc", 
+																new Node<>("a", 
+																		new Node<>("", null))))))));
+		
+		Node<String> output = util.getGroupedStrings(input, 2, 4);
+		
+		/* 
+		 * Group 1: strings from the input chain whose lengths are 
+		 * 	less than 2 (i.e., 0, 1) 
 		 */
-		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 5);
+		assertEquals("a"		, output.getElement());
+		assertEquals(""			, output.getNext().getElement());
+		/* 
+		 * Group 2: strings from the input chain whose lengths are 
+		 * 	greater than or equal to 2 and less than 4 (i.e., 2, 3) 
+		 */
+		assertEquals("xy"		, output.getNext().getNext().getElement());
+		assertEquals("def"		, output.getNext().getNext().getNext().getElement());
+		assertEquals("bc"		, output.getNext().getNext().getNext().getNext().getElement());
+		/* 
+		 * Group 3: strings from the input chain whose lengths are 
+		 * 	greater than or equal to 4 (i.e., 4, 5, ...) 
+		 */
+		assertEquals("vwxyzj"	, output.getNext().getNext().getNext().getNext().getNext().getElement());
+		assertEquals("ghic"		, output.getNext().getNext().getNext().getNext().getNext().getNext().getElement());
+		assertEquals("pqrstu"	, output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement());
 		
-		assertTrue(1 == output.getElement());
-		assertTrue(1 == output.getNext().getElement());
-		assertTrue(2 == output.getNext().getNext().getElement());
-		assertTrue(3 == output.getNext().getNext().getNext().getElement());
-		assertTrue(5 == output.getNext().getNext().getNext().getNext().getElement());
-		assertNull(output.getNext().getNext().getNext().getNext().getNext());
-		
+		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
 	}
 
 }

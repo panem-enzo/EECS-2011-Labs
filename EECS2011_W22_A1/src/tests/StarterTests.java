@@ -249,163 +249,163 @@ public class StarterTests {
 	 * 		2. One input chain contain values larger than all those contained in the other chain.
 	 */
 	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_01a() {
-//		ListUtilities util = new ListUtilities();
-//		
-//		/*
-//		 * Get a sequence interleaving elements from:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
-//		 * 	- A Fibonacci sequence of size 1.
-//		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>  
-//		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 1);
-//		
-//		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
-//		assertTrue(1 == output.getNext().getElement()); // only element from Fib. seq.
-//		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
-//		assertTrue(11 == output.getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
-//		assertTrue(14 == output.getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext());
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_01b() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving elements from:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
-//		 * 	- A Fibonacci sequence of size 2.
-//		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
-//		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 2);
-//		
-//		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
-//		assertTrue(1 == output.getNext().getElement()); // 1st element from Fib. seq.
-//		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
-//		assertTrue(1 == output.getNext().getNext().getNext().getElement()); // 2nd element from Fib. seq.
-//		assertTrue(11 == output.getNext().getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
-//		assertTrue(14 == output.getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext());
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_01c() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving elements from:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
-//		 * 	- A Fibonacci sequence of size 5.
-//		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
-//		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 5);
-//		
-//		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
-//		assertTrue(1 == output.getNext().getElement()); // 1st element from Fib. seq.
-//		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
-//		assertTrue(1 == output.getNext().getNext().getNext().getElement()); // 2nd element from Fib. seq.
-//		assertTrue(11 == output.getNext().getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
-//		assertTrue(2 == output.getNext().getNext().getNext().getNext().getNext().getElement()); // 3rd element from Fib. seq.
-//		assertTrue(14 == output.getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
-//		assertTrue(3 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from Fib. seq.
-//		assertTrue(5 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 5th element from arith. seq.
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_02() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving elements from:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
-//		 * 	- A Fibonacci sequence of size 0.
-//		 * In this special case, the resulting interleaving is just empty.
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 0);
-//		
-//		assertNull(output);
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_03() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
-//		 * 	- A Fibonacci sequence of size 0.
-//		 * In this special case, the resulting interleaving is just the arithmetic sequence.
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 0);
-//		
-//		assertTrue(5 == output.getElement());
-//		assertTrue(8 == output.getNext().getElement());
-//		assertTrue(11 == output.getNext().getNext().getElement());
-//		assertTrue(14 == output.getNext().getNext().getNext().getElement());
-//		assertNull(output.getNext().getNext().getNext().getNext());
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_04a() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
-//		 * 	- A Fibonacci sequence of size 1.
-//		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
-//		 * 
-//		 * In this special case, since the size of the arithmetic seq. is 0, 
-//		 * 	the resulting sequence is just the Fibonacci seq. of size 1.  
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 1);
-//		
-//		assertTrue(1 == output.getElement());
-//		assertNull(output.getNext());
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_04b() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
-//		 * 	- A Fibonacci sequence of size 2.
-//		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
-//		 * 
-//		 * In this special case, since the size of the arithmetic seq. is 0, 
-//		 * 	the resulting sequence is just the Fibonacci seq. of size 2.
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 2);
-//		
-//		assertTrue(1 == output.getElement());
-//		assertTrue(1 == output.getNext().getElement());
-//		assertNull(output.getNext().getNext());
-//	}
-//	
-//	@Test
-//	public void test_getInterleavingArithmeticFibonacciSeq_04c() {
-//		ListUtilities util = new ListUtilities();
-//		/*
-//		 * Get a sequence interleaving:
-//		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
-//		 * 	- A Fibonacci sequence of size 5.
-//		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
-//		 *   
-//		 * In this special case, since the size of the arithmetic seq. is 0, 
-//		 * 	the resulting sequence is just the Fibonacci seq. of size 5.  
-//		 */
-//		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 5);
-//		
-//		assertTrue(1 == output.getElement());
-//		assertTrue(1 == output.getNext().getElement());
-//		assertTrue(2 == output.getNext().getNext().getElement());
-//		assertTrue(3 == output.getNext().getNext().getNext().getElement());
-//		assertTrue(5 == output.getNext().getNext().getNext().getNext().getElement());
-//		assertNull(output.getNext().getNext().getNext().getNext().getNext());
-//	}
-//	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_01a() {
+		ListUtilities util = new ListUtilities();
+		
+		/*
+		 * Get a sequence interleaving elements from:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
+		 * 	- A Fibonacci sequence of size 1.
+		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>  
+		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 1);
+		
+		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
+		assertTrue(1 == output.getNext().getElement()); // only element from Fib. seq.
+		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
+		assertTrue(11 == output.getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
+		assertTrue(14 == output.getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
+		assertNull(output.getNext().getNext().getNext().getNext().getNext());
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_01b() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving elements from:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
+		 * 	- A Fibonacci sequence of size 2.
+		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
+		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 2);
+		
+		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
+		assertTrue(1 == output.getNext().getElement()); // 1st element from Fib. seq.
+		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
+		assertTrue(1 == output.getNext().getNext().getNext().getElement()); // 2nd element from Fib. seq.
+		assertTrue(11 == output.getNext().getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
+		assertTrue(14 == output.getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
+		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext());
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_01c() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving elements from:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
+		 * 	- A Fibonacci sequence of size 5.
+		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
+		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 5);
+		
+		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
+		assertTrue(1 == output.getNext().getElement()); // 1st element from Fib. seq.
+		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
+		assertTrue(1 == output.getNext().getNext().getNext().getElement()); // 2nd element from Fib. seq.
+		assertTrue(11 == output.getNext().getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
+		assertTrue(2 == output.getNext().getNext().getNext().getNext().getNext().getElement()); // 3rd element from Fib. seq.
+		assertTrue(14 == output.getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
+		assertTrue(3 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from Fib. seq.
+		assertTrue(5 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 5th element from arith. seq.
+		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_02() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving elements from:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
+		 * 	- A Fibonacci sequence of size 0.
+		 * In this special case, the resulting interleaving is just empty.
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 0);
+		
+		assertNull(output);
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_03() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 4.
+		 * 	- A Fibonacci sequence of size 0.
+		 * In this special case, the resulting interleaving is just the arithmetic sequence.
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 0);
+		
+		assertTrue(5 == output.getElement());
+		assertTrue(8 == output.getNext().getElement());
+		assertTrue(11 == output.getNext().getNext().getElement());
+		assertTrue(14 == output.getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext());
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_04a() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
+		 * 	- A Fibonacci sequence of size 1.
+		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
+		 * 
+		 * In this special case, since the size of the arithmetic seq. is 0, 
+		 * 	the resulting sequence is just the Fibonacci seq. of size 1.  
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 1);
+		
+		assertTrue(1 == output.getElement());
+		assertNull(output.getNext());
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_04b() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
+		 * 	- A Fibonacci sequence of size 2.
+		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
+		 * 
+		 * In this special case, since the size of the arithmetic seq. is 0, 
+		 * 	the resulting sequence is just the Fibonacci seq. of size 2.
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 2);
+		
+		assertTrue(1 == output.getElement());
+		assertTrue(1 == output.getNext().getElement());
+		assertNull(output.getNext().getNext());
+	}
+	
+	@Test
+	public void test_getInterleavingArithmeticFibonacciSeq_04c() {
+		ListUtilities util = new ListUtilities();
+		/*
+		 * Get a sequence interleaving:
+		 * 	- An arithmetic sequence, starting at 5 with a common difference 3, of size 0.
+		 * 	- A Fibonacci sequence of size 5.
+		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
+		 *   
+		 * In this special case, since the size of the arithmetic seq. is 0, 
+		 * 	the resulting sequence is just the Fibonacci seq. of size 5.  
+		 */
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 5);
+		
+		assertTrue(1 == output.getElement());
+		assertTrue(1 == output.getNext().getElement());
+		assertTrue(2 == output.getNext().getNext().getElement());
+		assertTrue(3 == output.getNext().getNext().getNext().getElement());
+		assertTrue(5 == output.getNext().getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext().getNext());
+	}
+	
 //	/*
 //	 * Jackie's suggestions for testing further: 
 //	 * 	As you will also be graded with additional tests, you may want to write more test methods to check cases where, 

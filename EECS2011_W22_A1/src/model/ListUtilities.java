@@ -15,20 +15,20 @@ public class ListUtilities {
 		boolean foundHead = false;
 
 		while (i < size) {
-			
+
 			String str = "[";
 			currentInt = headInt;
-			
+
 			for (int j=0; j < i; j++) {
 				str += currentInt.getElement() + ", ";
 				currentInt = currentInt.getNext();
 			}
-			
+
 			str += currentInt.getElement() + "]";
 			length ++;
-			
+
 			if (length >= low && length <= upper) {
-				
+
 				if (!foundHead) {
 					prefix = new Node<>(str, null);
 					currentPrefix = prefix;
@@ -37,7 +37,7 @@ public class ListUtilities {
 					currentPrefix.setNext(new Node<>(str, null));
 					currentPrefix = currentPrefix.getNext();
 				}
-				
+
 			}
 			i++;
 
@@ -48,55 +48,55 @@ public class ListUtilities {
 	}
 
 	public Node<Integer> getMergedChain(Node<Integer> leftChain, Node<Integer> rightChain) {
-		
+
 		if (leftChain == null && rightChain == null) {
 			return null;
 		} 
-		
+
 		// Merge both chains
-		
+
 		Node<Integer> head = leftChain;
 		Node<Integer> mergedChain = head;
-		
+
 		if (leftChain == null) {
 			mergedChain = rightChain;
 			head = rightChain;
 		} else if (rightChain == null) {
 			mergedChain = leftChain;
 		} else {
-			
+
 			// Find tail of leftChain
 			while (mergedChain.getNext() != null) {
 				mergedChain = mergedChain.getNext();
-				
+
 			}
 			mergedChain.setNext(rightChain);
 			mergedChain = head;
 		}
-		
+
 		// Apply insertion sort algorithm
-		
+
 		// Find the absolute minimum
 		Node<Integer> sortedHead = null;
 		Node<Integer> sorted = null;
-		
+
 		boolean foundAbsMin = false;
 		int size = getSize(mergedChain);
-		
+
 		for (int i = 0; i < size; i ++) {
-			
+
 			Node<Integer> currentMin = mergedChain;
 			int minIndex = 0;
 			int counter = 0;
-			
+
 			while (mergedChain.getNext() != null) {
-				
+
 				if (mergedChain.getNext().getElement() <= mergedChain.getElement()) {
 					if (mergedChain.getNext().getElement() <= currentMin.getElement()) {
 						currentMin = mergedChain.getNext();
 						minIndex = counter + 1;
 					}
-							
+
 				}  else {
 					if (mergedChain.getNext().getElement() <= currentMin.getElement()) {
 						currentMin = mergedChain;
@@ -106,37 +106,138 @@ public class ListUtilities {
 				mergedChain = mergedChain.getNext();
 				counter ++;
 			}
-			
+
 			// Insert currentMin into new list
 			if (!foundAbsMin) {
 				sortedHead = new Node<>(currentMin.getElement(), null);
 				sorted = sortedHead;
 				foundAbsMin = true;
-				
+
 			} else {
 				sorted.setNext(new Node<>(currentMin.getElement(), null));
 				sorted = sorted.getNext();
 			}
-			
-			
+
+
 			//Remove min from list to shorten unsorted list
 			if (currentMin == head) {
 				head = head.getNext();
 				mergedChain.setNext(null);
 			} else {
-		
+
 				Node<Integer> beforeMin = getNodeAt(head, minIndex-1);
 				beforeMin.setNext(currentMin.getNext());
 				currentMin.setNext(null);
-				
+
 			}
 			mergedChain = head;
-			
+
 		}
-		
+
 		return sortedHead;
 	}
-	
+
+	public Node<Integer> getInterleavedArithmeticFibonacciSequences(int arithStart, int arithDiff, int arithSize, int fibSize) {
+
+		// We need to create our lists first! (arithmetic sequence and fibnoacci sequence)
+		// Fibonacci Sequence
+
+		Node<Integer> fibHead = new Node<>(1, null);
+		Node<Integer> fib = fibHead;
+		Node<Integer> nodeBefore = null;
+
+		int i = 0;
+
+		while (i < fibSize-1) {
+
+			if (i == 0) {
+				nodeBefore = new Node<>(0, fib);
+				fib.setNext(new Node<>(nodeBefore.getElement() + fib.getElement(), null));
+				fib = fib.getNext();
+			} else {
+
+				nodeBefore = getNodeAt(fibHead, i-1);
+				fib.setNext(new Node<>(nodeBefore.getElement() + fib.getElement(), null));
+				fib = fib.getNext();
+
+			}
+
+			i ++;
+
+		}
+
+		fib = fibHead;
+
+		// Arithmetic Sequence
+
+		Node<Integer> arithHead = new Node<>(arithStart, null);
+		Node<Integer> arith = arithHead;
+
+		int j = 0;
+
+		while (j < arithSize-1) {
+
+			arith.setNext(new Node<>(arith.getElement() + arithDiff, null));
+			arith = arith.getNext();
+
+			j ++;
+		}
+
+		arith = arithHead;
+
+		//Now we can interleave!
+
+		Node<Integer> interleaveHead = null;
+		Node<Integer> interleave = null;
+		int interleaveSize = arithSize + fibSize;
+		int arithCount = 0, fibCount = 0;
+		int k = 0;
+		boolean finArith = false, finFib = false;
+
+		while (k < interleaveSize) {
+
+			if (arithCount == arithSize) {
+				finArith = true;
+			} else if (fibCount == fibSize) {
+				finFib = true;
+			}
+
+			if (k == 0) {
+				interleaveHead = new Node<>(arith.getElement(), null);
+				interleave = interleaveHead;
+				arith = arith.getNext();
+				arithCount ++;
+			} else if (k % 2 == 0) {
+
+				if (finFib) {
+					arith = arithHead;
+				}
+
+				interleave.setNext(arith);
+				arith = arith.getNext();
+				interleave = interleave.getNext();
+				arithCount ++;
+
+
+			} else {
+
+				if (finArith) {
+					fib = fibHead;
+				}
+
+				interleave.setNext(new Node<>(fib.getElement(), null));
+				fib = fib.getNext();
+				interleave = interleave.getNext();
+				fibCount ++;
+
+			}
+
+			k ++;
+		}
+
+		return interleaveHead;
+	}
+
 	private int getSize(Node<Integer> input) {
 
 		Node<Integer> current = input;
@@ -149,19 +250,19 @@ public class ListUtilities {
 
 		return size;
 	}
-	
+
 	private Node<Integer> getNodeAt(Node<Integer> head, int size) {
-		
+
 		int index = 0;
 		Node<Integer> current = head;
-		
+
 		while (index < size) {
 			index ++;
 			current = current.getNext();
 		}
-		
+
 		return current;
-		
+
 	}
 
 }

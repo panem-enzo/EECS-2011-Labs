@@ -39,19 +39,13 @@ public class REMOVETEST {
 		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
 		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
 		 */
-		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 5);
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 0);
 		
-		assertTrue(5 == output.getElement()); // 1st element from arith. seq.
-		assertTrue(1 == output.getNext().getElement()); // 1st element from Fib. seq.
-		assertTrue(8 == output.getNext().getNext().getElement()); // 2nd element from arith. seq.
-		assertTrue(1 == output.getNext().getNext().getNext().getElement()); // 2nd element from Fib. seq.
-		assertTrue(11 == output.getNext().getNext().getNext().getNext().getElement()); // 3rd element from arith. seq.
-		assertTrue(2 == output.getNext().getNext().getNext().getNext().getNext().getElement()); // 3rd element from Fib. seq.
-		assertTrue(14 == output.getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from arith. seq.
-		assertTrue(3 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 4th element from Fib. seq.
-		assertTrue(5 == output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getElement()); // 5th element from arith. seq.
-		assertNull(output.getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext().getNext());
-		
+		assertTrue(5 == output.getElement());
+		assertTrue(8 == output.getNext().getElement());
+		assertTrue(11 == output.getNext().getNext().getElement());
+		assertTrue(14 == output.getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext());
 		
 	}
 

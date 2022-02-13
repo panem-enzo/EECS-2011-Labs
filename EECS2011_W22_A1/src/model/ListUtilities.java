@@ -147,26 +147,33 @@ public class ListUtilities {
 		Node<Integer> nodeBefore = null;
 
 		int i = 0;
+		boolean finArith = false, finFib = false;
 
-		while (i < fibSize-1) {
+		if (fibSize == 0) {
+			finFib = true;
+		} else {
+			
+			while (i < fibSize-1) {
 
-			if (i == 0) {
-				nodeBefore = new Node<>(0, fib);
-				fib.setNext(new Node<>(nodeBefore.getElement() + fib.getElement(), null));
-				fib = fib.getNext();
-			} else {
+				if (i == 0) {
+					nodeBefore = new Node<>(0, fib);
+					fib.setNext(new Node<>(nodeBefore.getElement() + fib.getElement(), null));
+					fib = fib.getNext();
+				} else {
 
-				nodeBefore = getNodeAt(fibHead, i-1);
-				fib.setNext(new Node<>(nodeBefore.getElement() + fib.getElement(), null));
-				fib = fib.getNext();
+					nodeBefore = getNodeAt(fibHead, i-1);
+					fib.setNext(new Node<>(nodeBefore.getElement() + fib.getElement(), null));
+					fib = fib.getNext();
+
+				}
+
+				i ++;
 
 			}
 
-			i ++;
-
+			fib = fibHead;
+			
 		}
-
-		fib = fibHead;
 
 		// Arithmetic Sequence
 
@@ -174,61 +181,55 @@ public class ListUtilities {
 		Node<Integer> arith = arithHead;
 
 		int j = 0;
+		
+		if (arithSize == 0) {
+			finArith = true;
+		} else {
+			while (j < arithSize-1) {
 
-		while (j < arithSize-1) {
+				arith.setNext(new Node<>(arith.getElement() + arithDiff, null));
+				arith = arith.getNext();
 
-			arith.setNext(new Node<>(arith.getElement() + arithDiff, null));
-			arith = arith.getNext();
+				j ++;
+			}
 
-			j ++;
+			arith = arithHead;
 		}
-
-		arith = arithHead;
 
 		//Now we can interleave!
 
 		Node<Integer> interleaveHead = null;
 		Node<Integer> interleave = null;
 		int interleaveSize = arithSize + fibSize;
-		int arithCount = 0, fibCount = 0;
 		int k = 0;
-		boolean finArith = false, finFib = false;
 
 		while (k < interleaveSize) {
 
-			if (arithCount == arithSize) {
-				finArith = true;
-			} else if (fibCount == fibSize) {
-				finFib = true;
-			}
-
+			// Reset both lists
+			
 			if (k == 0) {
 				interleaveHead = new Node<>(arith.getElement(), null);
 				interleave = interleaveHead;
+				
+			} else if ((k % 2 == 0 && !finArith) || (finFib && !finArith)) {
+				
 				arith = arith.getNext();
-				arithCount ++;
-			} else if (k % 2 == 0) {
-
-				if (finFib) {
-					arith = arithHead;
-				}
-
-				interleave.setNext(arith);
-				arith = arith.getNext();
+				interleave.setNext(new Node<>(arith.getElement(), null));
 				interleave = interleave.getNext();
-				arithCount ++;
-
+				
+				if (arith.getNext() == null) {
+					finArith = true;
+				}
 
 			} else {
-
-				if (finArith) {
-					fib = fibHead;
+				
+				if (fib.getNext() == null) {
+					finFib = true;
 				}
-
+				
 				interleave.setNext(new Node<>(fib.getElement(), null));
 				fib = fib.getNext();
 				interleave = interleave.getNext();
-				fibCount ++;
 
 			}
 

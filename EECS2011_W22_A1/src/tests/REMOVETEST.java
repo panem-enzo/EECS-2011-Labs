@@ -39,13 +39,14 @@ public class REMOVETEST {
 		 * 	  Recall. A Fibonacci sequence is infinite: <1, 1, 2, 3, 5, 8, 13, ...>
 		 * (The interleaving starts with one element from the arith. seq., then one element from the Fib. seq., and so on.)  
 		 */
-		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 4, 0);
+		Node<Integer> output = util.getInterleavedArithmeticFibonacciSequences(5, 3, 0, 5);
 		
-		assertTrue(5 == output.getElement());
-		assertTrue(8 == output.getNext().getElement());
-		assertTrue(11 == output.getNext().getNext().getElement());
-		assertTrue(14 == output.getNext().getNext().getNext().getElement());
-		assertNull(output.getNext().getNext().getNext().getNext());
+		assertTrue(1 == output.getElement());
+		assertTrue(1 == output.getNext().getElement());
+		assertTrue(2 == output.getNext().getNext().getElement());
+		assertTrue(3 == output.getNext().getNext().getNext().getElement());
+		assertTrue(5 == output.getNext().getNext().getNext().getNext().getElement());
+		assertNull(output.getNext().getNext().getNext().getNext().getNext());
 		
 	}
 

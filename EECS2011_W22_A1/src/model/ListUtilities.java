@@ -208,8 +208,16 @@ public class ListUtilities {
 			// Reset both lists
 			
 			if (k == 0) {
-				interleaveHead = new Node<>(arith.getElement(), null);
-				interleave = interleaveHead;
+				
+				if (!finArith) {
+					interleaveHead = new Node<>(arith.getElement(), null);
+					interleave = interleaveHead;
+				} else {
+					interleaveHead = new Node<>(fib.getElement(), null);
+					interleave = interleaveHead;
+					fib = fib.getNext();
+				}
+			
 				
 			} else if ((k % 2 == 0 && !finArith) || (finFib && !finArith)) {
 				

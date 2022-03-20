@@ -9,11 +9,20 @@ public class TreeUtilities<Integer> {
 		SLLNode<Integer> elementsOfRanks = null;
 		TreeNode<Integer> currentMin = root;
 		SLLNode<TreeNode<Integer>> rootHead = new SLLNode<TreeNode<Integer>>(root, null);
+		SLLNode<Integer> intNode = null;
 		
 		for (int i = 1; i <= upper; i++) {
 			
-			SLLNode<TreeNode<Integer>> element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, currentMin), null);
-			SLLNode<Integer> intNode = new SLLNode<Integer>(element.getElement().getElement(), null);
+			SLLNode<TreeNode<Integer>> element;
+			
+			if (i == 1) {
+				element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, null, 0), null);
+				intNode = new SLLNode<Integer>(element.getElement().getElement(), null);
+			} else {
+				element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, null, (int)intNode.getElement()), null);
+				intNode.setNext(new SLLNode<Integer>(element.getElement().getElement(), null));
+				intNode = intNode.getNext();
+			}
 			
 			if (i >= lower) {
 				
@@ -31,7 +40,7 @@ public class TreeUtilities<Integer> {
 
 	}
 
-	private TreeNode<Integer> getElementsOfRanksHelper(SLLNode<TreeNode<Integer>> head, TreeNode<Integer> currentMin) {
+	private TreeNode<Integer> getElementsOfRanksHelper(SLLNode<TreeNode<Integer>> head, TreeNode<Integer> currentMin, int previousMin) {
 		
 		SLLNode<TreeNode<Integer>> current = head;
 		TreeNode<Integer> finalMin = currentMin;
@@ -41,17 +50,23 @@ public class TreeUtilities<Integer> {
 			Integer currentNum = current.getElement().getElement();
 			SLLNode<TreeNode<Integer>> child = current.getElement().getChildren();
 			
-				if ((int) currentNum < (int) finalMin.getElement()) {
+				if ((int) currentNum > (int) previousMin) {
 					
-					if (child != null) { 
-						finalMin = getElementsOfRanksHelper(child, current.getElement());
-					} 
+					if (finalMin == null || (int) currentNum < (int) finalMin.getElement()) {
+						if (child != null) { 
+							finalMin = getElementsOfRanksHelper(child, current.getElement(), previousMin);
+						}  else {
+							finalMin = current.getElement();
+						}
+					}
+					
 					
 				} else {
 					
 					if (child != null) { 
-						finalMin = getElementsOfRanksHelper(child, finalMin);
+						finalMin = getElementsOfRanksHelper(child, finalMin, previousMin);
 					} 
+					
 					
 				}
 			

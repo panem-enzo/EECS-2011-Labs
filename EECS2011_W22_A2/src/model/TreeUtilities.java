@@ -7,6 +7,7 @@ public class TreeUtilities<Integer> {
 	public SLLNode<Integer> getElementsOfRanks(TreeNode<Integer> root, int lower, int upper) {
 
 		SLLNode<Integer> elementsOfRanks = null;
+		SLLNode<Integer> elementsOfRanksHead = null;
 		TreeNode<Integer> currentMin = root;
 		SLLNode<TreeNode<Integer>> rootHead = new SLLNode<TreeNode<Integer>>(root, null);
 		SLLNode<Integer> intNode = null;
@@ -28,6 +29,7 @@ public class TreeUtilities<Integer> {
 				
 				if (elementsOfRanks == null) {
 					elementsOfRanks = intNode;
+					elementsOfRanksHead = elementsOfRanks;
 				} else {
 					elementsOfRanks.setNext(intNode);
 					elementsOfRanks = elementsOfRanks.getNext();
@@ -36,7 +38,7 @@ public class TreeUtilities<Integer> {
 			} 
 		}
 
-		return elementsOfRanks;
+		return elementsOfRanksHead;
 
 	}
 

@@ -253,7 +253,6 @@ public class ListUtilities {
 			return null;
 		}
 		
-		Node<String> head = input;
 		Node<String> output = null;
 		
 		//Creating Group 1, 2, 3

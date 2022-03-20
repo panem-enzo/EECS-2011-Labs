@@ -4,37 +4,61 @@ import tests.*;
 
 public class TreeUtilities<Integer> {
 
-	public SLLNode<TreeNode<Integer>> getElementsOfRanks(TreeNode<Integer> root, int lower, int upper) {
+	public SLLNode<Integer> getElementsOfRanks(TreeNode<Integer> root, int lower, int upper) {
 
+		SLLNode<Integer> elementsOfRanks = null;
+		TreeNode<Integer> currentMin = root;
+		SLLNode<TreeNode<Integer>> rootHead = new SLLNode<TreeNode<Integer>>(root, null);
+		
+		for (int i = 1; i <= upper; i++) {
+			
+			SLLNode<TreeNode<Integer>> element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, currentMin), null);
+			SLLNode<Integer> intNode = new SLLNode<Integer>(element.getElement().getElement(), null);
+			
+			if (i >= lower) {
+				
+				if (elementsOfRanks == null) {
+					elementsOfRanks = intNode;
+				} else {
+					elementsOfRanks.setNext(intNode);
+					elementsOfRanks = elementsOfRanks.getNext();
+				}
+				
+			} 
+		}
 
-
-
-
-		return null;
+		return elementsOfRanks;
 
 	}
 
-	private SLLNode<TreeNode<Integer>> getElementsOfRanksHelper(SLLNode<TreeNode<Integer>> input) {
-
-		SLLNode<TreeNode<Integer>> head = input.getElement().getHeadOfChild(input);
-		SLLNode<TreeNode<Integer>> tail = input.getElement().getTailOfChild(input);
-		SLLNode<TreeNode<Integer>> child = head;
-
-		while (child.getNext() != null) {
-
-			if (child.getElement().getChildren() != null) {
-				tail.setNext(getElementsOfRanksHelper(child));
-				while (tail.getNext() != null) {
-					tail = tail.getNext();
+	private TreeNode<Integer> getElementsOfRanksHelper(SLLNode<TreeNode<Integer>> head, TreeNode<Integer> currentMin) {
+		
+		SLLNode<TreeNode<Integer>> current = head;
+		TreeNode<Integer> finalMin = currentMin;
+		
+		while (current != null) {
+			
+			Integer currentNum = current.getElement().getElement();
+			SLLNode<TreeNode<Integer>> child = current.getElement().getChildren();
+			
+				if ((int) currentNum < (int) finalMin.getElement()) {
+					
+					if (child != null) { 
+						finalMin = getElementsOfRanksHelper(child, current.getElement());
+					} 
+					
+				} else {
+					
+					if (child != null) { 
+						finalMin = getElementsOfRanksHelper(child, finalMin);
+					} 
+					
 				}
-
-			} 
-
-			child = child.getNext();
-
+			
+			current = current.getNext();
 		}
-
-		return head;
+		
+		return finalMin;
 
 	}
 

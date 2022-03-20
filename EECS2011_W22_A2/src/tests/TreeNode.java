@@ -68,12 +68,12 @@ public class TreeNode<E> {
 		}
 	}
 	
-	public SLLNode<TreeNode<E>> getHeadOfChild(SLLNode<TreeNode<E>> input) {
-		return this.headOfChildList;
-	}
-	
-	public SLLNode<TreeNode<E>> getTailOfChild(SLLNode<TreeNode<E>> input) {
-		return this.tailOfChildList;
-	}
+//	public SLLNode<TreeNode<E>> getHeadOfChild(SLLNode<TreeNode<E>> input) {
+//		return this.headOfChildList;
+//	}
+//	
+//	public SLLNode<TreeNode<E>> getTailOfChild(SLLNode<TreeNode<E>> input) {
+//		return this.tailOfChildList;
+//	}
 	
 }

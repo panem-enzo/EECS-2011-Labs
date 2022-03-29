@@ -14,6 +14,7 @@
 		<item key="WizardZipFileResourceExportPage1.STORE_CREATE_STRUCTURE_ID" value="true"/>
 		<item key="WizardZipFileResourceExportPage1.STORE_COMPRESS_CONTENTS_ID" value="true"/>
 		<list key="WizardZipFileResourceExportPage1.STORE_DESTINATION_NAMES_ID">
+			<item value="D:\Users\panem\Documents\OneDrive - York University\Lassonde Engineering (OneDrive)\Lassonde Engineering\W22\EECS 2011\Lab_Assignment\Assignment 2\Submission\EECS2011_W22_A2.zip"/>
 			<item value="D:\Users\panem\Documents\OneDrive - York University\Lassonde Engineering (OneDrive)\Lassonde Engineering\W22\EECS 2011\Lab_Assignment\Assignment 1\Submission\EECS2011_W22_A1.zip"/>
 		</list>
 	</section>

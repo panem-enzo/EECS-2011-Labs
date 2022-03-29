@@ -19,7 +19,7 @@ public class TreeUtilities {
 				element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, null, 0), null);
 				intNode = new SLLNode<Integer>(element.getElement().getElement(), null);
 			} else {
-				element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, null, (int)intNode.getElement()), null);
+				element = new SLLNode<TreeNode<Integer>>(getElementsOfRanksHelper(rootHead, root, (int)intNode.getElement()), null);
 				intNode.setNext(new SLLNode<Integer>(element.getElement().getElement(), null));
 				intNode = intNode.getNext();
 			}

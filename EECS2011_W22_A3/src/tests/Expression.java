@@ -6,5 +6,5 @@ package tests;
  */
 
 public abstract class Expression {
-	 
+
 }

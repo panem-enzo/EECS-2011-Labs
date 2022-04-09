@@ -9,65 +9,57 @@ public class TreeUtilities {
 	
 	public TreeNode<Expression> getInfixTree(SLLNode<Expression> e) {
 		
-		TreeNode<Expression> infix = new TreeNode<>(e.getElement());
-		
+		TreeNode<Expression> infix = new TreeNode<>(null);
 		SLLNode<Expression> current = e;
 		SLLNode<Expression> stack = null;
 		
 		while (current != null) {
-			
 			if (current.getElement() instanceof Operator) {
-				infix = new TreeNode<Expression>(current.getElement());
-				getInfixTreeHelper(infix, stack);
-				stack = null;
+				infix.setElement(current.getElement());
+				
+				infix.addChild(new TreeNode<>(pop(stack)));
+				infix.addChild(new TreeNode<>(pop(stack)));
 			} else {
-				stack = pushStack(current, stack);
+				stack = push(stack, current.getElement());
 			}
-			
-			current = current.getNext();
 		}
 		
 		return infix;
 	}
 	
-	private void getInfixTreeHelper(TreeNode<Expression> infix, SLLNode<Expression> stack) {
+	private SLLNode<Expression> push(SLLNode<Expression> stack, Expression element) {
 		
-		SLLNode<Expression> current = stack;
-		
-		while (current != null) {
-			
-			TreeNode<Expression> child = new TreeNode<Expression>(current.getElement());
-			child.setParent(infix);
-			infix.addChild(child);
-			
-			current = current.getNext();
-		}
-
-	}
-	
-	private Expression topStack(SLLNode<Expression> top) {
-		return top.getElement();
-	}
-	
-	private SLLNode<Expression> pushStack(SLLNode<Expression> input, SLLNode<Expression> stack) {
+		SLLNode<Expression> stackHead = stack;
 		
 		if (stack == null) {
-			stack = new SLLNode<Expression>(input.getElement(), null);
+			stackHead = new SLLNode<>(element, null);
+			stack = stackHead;
 		} else {
-			
-			SLLNode<Expression> top = new SLLNode<Expression>(topStack(input), null);
-			stack.setNext(top);
+			stack.setNext(new SLLNode<>(element, null));
+			stack = stack.getNext();
 		}
 		
-		return stack;
+		return stackHead;
+	}
+ 	
+	private Expression pop (SLLNode<Expression> stack) {
+		
+		Expression element = null;
+		return element;
 		
 	}
 	
-	private Expression popStack(SLLNode<Expression> stack) {
-		Expression result;
-		result = topStack(stack);
-		// remove topStack
-		return result;
-	}
+//	private int size(SLLNode<Expression> stack) {
+//	
+//	SLLNode<Expression> current = stack;
+//	int size = 0;
+//	
+//	while (current != null) {
+//		size ++;
+//		current = current.getNext();
+//	}
+//	
+//	return size;
+//}
 	
 }

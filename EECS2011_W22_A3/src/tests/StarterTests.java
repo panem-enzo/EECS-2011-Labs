@@ -204,271 +204,271 @@ public class StarterTests {
 		assertNull(levelOneChild2.getElement().getChildren()); 
 	} 
 	
-//	@Test
-//	public void test_getInfixTree_03() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		Expression operand2 = new Operand(46);
-//		Expression operand3 = new Operand(69);
-//		Expression operator1 = new Operator('+');
-//		Expression operator2 = new Operator('*');
-//		
-//		/* Create a postfix expression "23 46 69 * +" */
-//		SLLNode<Expression> expression = 
-//			new SLLNode<>(operand1, 
-//			new SLLNode<>(operand2, 
-//			new SLLNode<>(operand3,
-//			new SLLNode<>(operator2, 
-//			new SLLNode<>(operator1, null)))));
-//		
-//		/* 
-//		 * Expected to return a tree storing the infix expression `23 + (46 * 69)`
-//		 * Note: The parentheses here are only meant to indicate the order of evaluation: they need not be stored in the output tree. 
-//		 */
-//		TreeNode<Expression> root = u.getInfixTree(expression);
-//		
-//		/*
-//		 * Hint: Visualize what tree structure is being asserted by the tests.
-//		 * See TestGeneralTrees on how to use SLLNode and TreeNode. 
-//		 */  
-//		SLLNode<TreeNode<Expression>> levelOneChild1 = root.getChildren();
-//		SLLNode<TreeNode<Expression>> levelOneChild2 = levelOneChild1.getNext();
-//		assertNull(levelOneChild2.getNext());
-//		SLLNode<TreeNode<Expression>> levelTwoChild1 = levelOneChild2.getElement().getChildren();
-//		SLLNode<TreeNode<Expression>> levelTwoChild2 = levelTwoChild1.getNext();
-//		assertNull(levelTwoChild2.getNext());
-//		
-//		assertTrue(root.getElement() == operator1);
-//		assertTrue(levelOneChild1.getElement().getElement() == operand1);
-//		assertTrue(levelOneChild2.getElement().getElement() == operator2);
-//		assertTrue(levelTwoChild1.getElement().getElement() == operand2);
-//		assertTrue(levelTwoChild2.getElement().getElement() == operand3);
-//		
-//		assertNull(root.getParent());
-//		assertTrue(root == levelOneChild1.getElement().getParent());
-//		assertTrue(root == levelOneChild2.getElement().getParent());
-//		assertTrue(levelOneChild2.getElement() == levelTwoChild1.getElement().getParent());
-//		assertTrue(levelOneChild2.getElement() == levelTwoChild2.getElement().getParent());
-//		assertNull(levelOneChild1.getElement().getChildren());
-//		assertNull(levelTwoChild1.getElement().getChildren());
-//		assertNull(levelTwoChild2.getElement().getChildren());
-//	}
-//	
-//	@Test
-//	public void test_getInfixTree_04() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		Expression operand2 = new Operand(46);
-//		Expression operand3 = new Operand(69);
-//		Expression operand4 = new Operand(92);
-//		Expression operator1 = new Operator('-');
-//		Expression operator2 = new Operator('+');
-//		Expression operator3 = new Operator('*');
-//		
-//		/* Create a postfix expression "23 46 - 69 92 * +" */
-//		SLLNode<Expression> expression = 
-//			new SLLNode<>(operand1, 
-//			new SLLNode<>(operand2, 
-//			new SLLNode<>(operator1,
-//			new SLLNode<>(operand3, 
-//			new SLLNode<>(operand4, 
-//			new SLLNode<>(operator3, 
-//			new SLLNode<>(operator2, null)))))));
-//		
-//		/* 
-//		 * Expected to return a tree storing the infix expression `(23 - 46) + (69 * 92)`
-//		 * Note: The parentheses here are only meant to indicate the order of evaluation: they need not be stored in the output tree. 
-//		 */
-//		TreeNode<Expression> root = u.getInfixTree(expression);
-//		
-//		/*
-//		 * Hint: Visualize what tree structure is being asserted by the tests.
-//		 * See TestGeneralTrees on how to use SLLNode and TreeNode. 
-//		 */  
-//		SLLNode<TreeNode<Expression>> levelOneChild1 = root.getChildren();
-//		SLLNode<TreeNode<Expression>> levelOneChild2 = levelOneChild1.getNext();
-//		assertNull(levelOneChild2.getNext());
-//		SLLNode<TreeNode<Expression>> levelTwoChild1 = levelOneChild1.getElement().getChildren();
-//		SLLNode<TreeNode<Expression>> levelTwoChild2 = levelTwoChild1.getNext();
-//		assertNull(levelTwoChild2.getNext());
-//		SLLNode<TreeNode<Expression>> levelTwoChild3 = levelOneChild2.getElement().getChildren();
-//		SLLNode<TreeNode<Expression>> levelTwoChild4 = levelTwoChild3.getNext();
-//		assertNull(levelTwoChild4.getNext());
-//		
-//		assertTrue(root.getElement() == operator2);
-//		assertTrue(levelOneChild1.getElement().getElement() == operator1);
-//		assertTrue(levelTwoChild1.getElement().getElement() == operand1);
-//		assertTrue(levelTwoChild2.getElement().getElement() == operand2);
-//		assertTrue(levelOneChild2.getElement().getElement() == operator3);
-//		assertTrue(levelTwoChild3.getElement().getElement() == operand3);
-//		assertTrue(levelTwoChild4.getElement().getElement() == operand4);
-//		
-//		assertNull(root.getParent());
-//		assertTrue(root == levelOneChild1.getElement().getParent());
-//		assertTrue(root == levelOneChild2.getElement().getParent());
-//		assertTrue(levelOneChild1.getElement() == levelTwoChild1.getElement().getParent());
-//		assertTrue(levelOneChild1.getElement() == levelTwoChild2.getElement().getParent());
-//		assertTrue(levelOneChild2.getElement() == levelTwoChild3.getElement().getParent());
-//		assertTrue(levelOneChild2.getElement() == levelTwoChild4.getElement().getParent());
-//		assertNull(levelTwoChild1.getElement().getChildren());
-//		assertNull(levelTwoChild2.getElement().getChildren());
-//		assertNull(levelTwoChild3.getElement().getChildren());
-//		assertNull(levelTwoChild4.getElement().getChildren());
-//	}
-//	
-//	/*
-//	 * Tests related to getInfixSequence
-//	 */
-//	
-//	@Test
-//	public void test_getInfixSequence_00() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		
-//		SLLNode<Expression> expression = new SLLNode<>(operand1, null);
-//		
-//		/*
-//		 * Input of `getInfixSequence`: a chain of SLLNode objects representing a postfix expression
-//		 * Output: a string of an infix expression that is equivalent to the input postfix expression
-//		 * 
-//		 * Assumptions:
-//		 * 	+ Only these operators will appear on inputs: `+` (addition), `-` (subtraction), `*` (multiplication).
-//		 * 	+ Operand values are integers (negative, zero, positive). 
-//		 * 	+ The input postfix expression is not null and it is valid: no error handling is needed.
-//		 * 	+ An inheritance hierarchy exists among the given classes `Expression`, `Operator`, and `Operand` in the `tests` package.
-//		 * 
-//		 * Requirements:
-//		 * 	+ You must use the provided classes SLLNode and TreeNode (without modifying them) in the `tests` package.
-//		 * 	+ No extra external/internal classes beyond what is required by the StarterTests (i.e., TreeUtilities) are allowed.
-//		 * 
-//		 * Background:
-//		 * 	+ Refer to the lecture materials on how postfix expressions should be calculated.
-//		 * 	+ If you wish to use a stack or queue in the TreeUtilities, the programming requirements apply:
-//		 * 		- No primitive arrays
-//		 * 		- No library classes
-//		 * 		- No additional inner/external classes
-//		 * 	  Instead, use helper methods or attributes/variables for implementation.
-//		 */
-//		
-//		/* Expected to return a string storing the infix expression `23` */
-//		assertEquals("23", u.getInfixSequence(expression));
-//		/* 
-//		 * When the expression only involves a single operand, no parentheses are to be included. 
-//		 */
-//	}
-//	
-//	@Test
-//	public void test_getInfixSequence_01() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		Expression operand2 = new Operand(46);
-//		Expression operator1 = new Operator('+');
-//		
-//		/* Create a postfix expression "23 46 +" */
-//		SLLNode<Expression> expression = 
-//			new SLLNode<>(operand1, 
-//			new SLLNode<>(operand2, 
-//			new SLLNode<>(operator1, null)));
-//		
-//		/* Expected to return a string storing the infix expression `23 + 46` */
-//		assertEquals("(23 + 46)", u.getInfixSequence(expression));
-//		/* 
-//		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
-//		 */
-//	}
-//	
-//	@Test
-//	public void test_getInfixSequence_02() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		Expression operand2 = new Operand(46);
-//		Expression operand3 = new Operand(69);
-//		Expression operator1 = new Operator('+');
-//		Expression operator2 = new Operator('*');
-//		
-//		/* Create a postfix expression "23 46 + 69 *" */
-//		SLLNode<Expression> expression = 
-//			new SLLNode<>(operand1, 
-//			new SLLNode<>(operand2, 
-//			new SLLNode<>(operator1, 
-//			new SLLNode<>(operand3, 
-//			new SLLNode<>(operator2, null)))));
-//		
-//		/* Expected to return a string storing the infix expression `(23 + 46) * 69`
-//		 * Note: The parentheses here are meant to indicate the order of evaluation: they need to be stored in the output string. 
-//		 */
-//		assertEquals("((23 + 46) * 69)", u.getInfixSequence(expression));
-//		/* 
-//		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
-//		 */
-//	} 
-//	
-//	@Test
-//	public void test_getInfixSequence_03() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		Expression operand2 = new Operand(46);
-//		Expression operand3 = new Operand(69);
-//		Expression operator1 = new Operator('+');
-//		Expression operator2 = new Operator('*');
-//		
-//		/* Create a postfix expression "23 46 69 * +" */
-//		SLLNode<Expression> expression = 
-//			new SLLNode<>(operand1, 
-//			new SLLNode<>(operand2, 
-//			new SLLNode<>(operand3,
-//			new SLLNode<>(operator2, 
-//			new SLLNode<>(operator1, null)))));
-//		
-//		/* Expected to return a string storing the infix expression `23 + (46 * 69)`
-//		 * Notes: 
-//		 * 	+ The parentheses here are meant to indicate the order of evaluation: they need to be stored in the output string.
-//		 *  + For this task, we disregard operator precedences: always put a pair or parentheses to explicitly indicate the order of evaluation. 
-//		 */
-//		assertEquals("(23 + (46 * 69))", u.getInfixSequence(expression));
-//		/* 
-//		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
-//		 */
-//	}
-//	
-//	@Test
-//	public void test_getInfixSequence_04() {
-//		TreeUtilities u = new TreeUtilities();
-//		
-//		Expression operand1 = new Operand(23);
-//		Expression operand2 = new Operand(46);
-//		Expression operand3 = new Operand(69);
-//		Expression operand4 = new Operand(92);
-//		Expression operator1 = new Operator('-');
-//		Expression operator2 = new Operator('+');
-//		Expression operator3 = new Operator('*');
-//		
-//		/* Create a postfix expression "23 46 - 69 92 * +" */
-//		SLLNode<Expression> expression = 
-//			new SLLNode<>(operand1, 
-//			new SLLNode<>(operand2, 
-//			new SLLNode<>(operator1,
-//			new SLLNode<>(operand3, 
-//			new SLLNode<>(operand4, 
-//			new SLLNode<>(operator3, 
-//			new SLLNode<>(operator2, null)))))));
-//		
-//		/* Expected to return a string storing the infix expression `(23 - 46) + (69 * 92)`
-//		 * Notes: 
-//		 * 	+ The parentheses here are meant to indicate the order of evaluation: they need to be stored in the output string.
-//		 *  + For this task, we disregard operator precedences: always put a pair or parentheses to explicitly indicate the order of evaluation. 
-//		 */
-//		assertEquals("((23 - 46) + (69 * 92))", u.getInfixSequence(expression));
-//		/* 
-//		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
-//		 */
-//	}
+	@Test
+	public void test_getInfixTree_03() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		Expression operand2 = new Operand(46);
+		Expression operand3 = new Operand(69);
+		Expression operator1 = new Operator('+');
+		Expression operator2 = new Operator('*');
+		
+		/* Create a postfix expression "23 46 69 * +" */
+		SLLNode<Expression> expression = 
+			new SLLNode<>(operand1, 
+			new SLLNode<>(operand2, 
+			new SLLNode<>(operand3,
+			new SLLNode<>(operator2, 
+			new SLLNode<>(operator1, null)))));
+		
+		/* 
+		 * Expected to return a tree storing the infix expression `23 + (46 * 69)`
+		 * Note: The parentheses here are only meant to indicate the order of evaluation: they need not be stored in the output tree. 
+		 */
+		TreeNode<Expression> root = u.getInfixTree(expression);
+		
+		/*
+		 * Hint: Visualize what tree structure is being asserted by the tests.
+		 * See TestGeneralTrees on how to use SLLNode and TreeNode. 
+		 */  
+		SLLNode<TreeNode<Expression>> levelOneChild1 = root.getChildren();
+		SLLNode<TreeNode<Expression>> levelOneChild2 = levelOneChild1.getNext();
+		assertNull(levelOneChild2.getNext());
+		SLLNode<TreeNode<Expression>> levelTwoChild1 = levelOneChild2.getElement().getChildren();
+		SLLNode<TreeNode<Expression>> levelTwoChild2 = levelTwoChild1.getNext();
+		assertNull(levelTwoChild2.getNext());
+		
+		assertTrue(root.getElement() == operator1);
+		assertTrue(levelOneChild1.getElement().getElement() == operand1);
+		assertTrue(levelOneChild2.getElement().getElement() == operator2);
+		assertTrue(levelTwoChild1.getElement().getElement() == operand2);
+		assertTrue(levelTwoChild2.getElement().getElement() == operand3);
+		
+		assertNull(root.getParent());
+		assertTrue(root == levelOneChild1.getElement().getParent());
+		assertTrue(root == levelOneChild2.getElement().getParent());
+		assertTrue(levelOneChild2.getElement() == levelTwoChild1.getElement().getParent());
+		assertTrue(levelOneChild2.getElement() == levelTwoChild2.getElement().getParent());
+		assertNull(levelOneChild1.getElement().getChildren());
+		assertNull(levelTwoChild1.getElement().getChildren());
+		assertNull(levelTwoChild2.getElement().getChildren());
+	}
+	
+	@Test
+	public void test_getInfixTree_04() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		Expression operand2 = new Operand(46);
+		Expression operand3 = new Operand(69);
+		Expression operand4 = new Operand(92);
+		Expression operator1 = new Operator('-');
+		Expression operator2 = new Operator('+');
+		Expression operator3 = new Operator('*');
+		
+		/* Create a postfix expression "23 46 - 69 92 * +" */
+		SLLNode<Expression> expression = 
+			new SLLNode<>(operand1, 
+			new SLLNode<>(operand2, 
+			new SLLNode<>(operator1,
+			new SLLNode<>(operand3, 
+			new SLLNode<>(operand4, 
+			new SLLNode<>(operator3, 
+			new SLLNode<>(operator2, null)))))));
+		
+		/* 
+		 * Expected to return a tree storing the infix expression `(23 - 46) + (69 * 92)`
+		 * Note: The parentheses here are only meant to indicate the order of evaluation: they need not be stored in the output tree. 
+		 */
+		TreeNode<Expression> root = u.getInfixTree(expression);
+		
+		/*
+		 * Hint: Visualize what tree structure is being asserted by the tests.
+		 * See TestGeneralTrees on how to use SLLNode and TreeNode. 
+		 */  
+		SLLNode<TreeNode<Expression>> levelOneChild1 = root.getChildren();
+		SLLNode<TreeNode<Expression>> levelOneChild2 = levelOneChild1.getNext();
+		assertNull(levelOneChild2.getNext());
+		SLLNode<TreeNode<Expression>> levelTwoChild1 = levelOneChild1.getElement().getChildren();
+		SLLNode<TreeNode<Expression>> levelTwoChild2 = levelTwoChild1.getNext();
+		assertNull(levelTwoChild2.getNext());
+		SLLNode<TreeNode<Expression>> levelTwoChild3 = levelOneChild2.getElement().getChildren();
+		SLLNode<TreeNode<Expression>> levelTwoChild4 = levelTwoChild3.getNext();
+		assertNull(levelTwoChild4.getNext());
+		
+		assertTrue(root.getElement() == operator2);
+		assertTrue(levelOneChild1.getElement().getElement() == operator1);
+		assertTrue(levelTwoChild1.getElement().getElement() == operand1);
+		assertTrue(levelTwoChild2.getElement().getElement() == operand2);
+		assertTrue(levelOneChild2.getElement().getElement() == operator3);
+		assertTrue(levelTwoChild3.getElement().getElement() == operand3);
+		assertTrue(levelTwoChild4.getElement().getElement() == operand4);
+		
+		assertNull(root.getParent());
+		assertTrue(root == levelOneChild1.getElement().getParent());
+		assertTrue(root == levelOneChild2.getElement().getParent());
+		assertTrue(levelOneChild1.getElement() == levelTwoChild1.getElement().getParent());
+		assertTrue(levelOneChild1.getElement() == levelTwoChild2.getElement().getParent());
+		assertTrue(levelOneChild2.getElement() == levelTwoChild3.getElement().getParent());
+		assertTrue(levelOneChild2.getElement() == levelTwoChild4.getElement().getParent());
+		assertNull(levelTwoChild1.getElement().getChildren());
+		assertNull(levelTwoChild2.getElement().getChildren());
+		assertNull(levelTwoChild3.getElement().getChildren());
+		assertNull(levelTwoChild4.getElement().getChildren());
+	}
+	
+	/*
+	 * Tests related to getInfixSequence
+	 */
+	
+	@Test
+	public void test_getInfixSequence_00() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		
+		SLLNode<Expression> expression = new SLLNode<>(operand1, null);
+		
+		/*
+		 * Input of `getInfixSequence`: a chain of SLLNode objects representing a postfix expression
+		 * Output: a string of an infix expression that is equivalent to the input postfix expression
+		 * 
+		 * Assumptions:
+		 * 	+ Only these operators will appear on inputs: `+` (addition), `-` (subtraction), `*` (multiplication).
+		 * 	+ Operand values are integers (negative, zero, positive). 
+		 * 	+ The input postfix expression is not null and it is valid: no error handling is needed.
+		 * 	+ An inheritance hierarchy exists among the given classes `Expression`, `Operator`, and `Operand` in the `tests` package.
+		 * 
+		 * Requirements:
+		 * 	+ You must use the provided classes SLLNode and TreeNode (without modifying them) in the `tests` package.
+		 * 	+ No extra external/internal classes beyond what is required by the StarterTests (i.e., TreeUtilities) are allowed.
+		 * 
+		 * Background:
+		 * 	+ Refer to the lecture materials on how postfix expressions should be calculated.
+		 * 	+ If you wish to use a stack or queue in the TreeUtilities, the programming requirements apply:
+		 * 		- No primitive arrays
+		 * 		- No library classes
+		 * 		- No additional inner/external classes
+		 * 	  Instead, use helper methods or attributes/variables for implementation.
+		 */
+		
+		/* Expected to return a string storing the infix expression `23` */
+		assertEquals("23", u.getInfixSequence(expression));
+		/* 
+		 * When the expression only involves a single operand, no parentheses are to be included. 
+		 */
+	}
+	
+	@Test
+	public void test_getInfixSequence_01() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		Expression operand2 = new Operand(46);
+		Expression operator1 = new Operator('+');
+		
+		/* Create a postfix expression "23 46 +" */
+		SLLNode<Expression> expression = 
+			new SLLNode<>(operand1, 
+			new SLLNode<>(operand2, 
+			new SLLNode<>(operator1, null)));
+		
+		/* Expected to return a string storing the infix expression `23 + 46` */
+		assertEquals("(23 + 46)", u.getInfixSequence(expression));
+		/* 
+		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
+		 */
+	}
+	
+	@Test
+	public void test_getInfixSequence_02() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		Expression operand2 = new Operand(46);
+		Expression operand3 = new Operand(69);
+		Expression operator1 = new Operator('+');
+		Expression operator2 = new Operator('*');
+		
+		/* Create a postfix expression "23 46 + 69 *" */
+		SLLNode<Expression> expression = 
+			new SLLNode<>(operand1, 
+			new SLLNode<>(operand2, 
+			new SLLNode<>(operator1, 
+			new SLLNode<>(operand3, 
+			new SLLNode<>(operator2, null)))));
+		
+		/* Expected to return a string storing the infix expression `(23 + 46) * 69`
+		 * Note: The parentheses here are meant to indicate the order of evaluation: they need to be stored in the output string. 
+		 */
+		assertEquals("((23 + 46) * 69)", u.getInfixSequence(expression));
+		/* 
+		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
+		 */
+	} 
+	
+	@Test
+	public void test_getInfixSequence_03() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		Expression operand2 = new Operand(46);
+		Expression operand3 = new Operand(69);
+		Expression operator1 = new Operator('+');
+		Expression operator2 = new Operator('*');
+		
+		/* Create a postfix expression "23 46 69 * +" */
+		SLLNode<Expression> expression = 
+			new SLLNode<>(operand1, 
+			new SLLNode<>(operand2, 
+			new SLLNode<>(operand3,
+			new SLLNode<>(operator2, 
+			new SLLNode<>(operator1, null)))));
+		
+		/* Expected to return a string storing the infix expression `23 + (46 * 69)`
+		 * Notes: 
+		 * 	+ The parentheses here are meant to indicate the order of evaluation: they need to be stored in the output string.
+		 *  + For this task, we disregard operator precedences: always put a pair or parentheses to explicitly indicate the order of evaluation. 
+		 */
+		assertEquals("(23 + (46 * 69))", u.getInfixSequence(expression));
+		/* 
+		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
+		 */
+	}
+	
+	@Test
+	public void test_getInfixSequence_04() {
+		TreeUtilities u = new TreeUtilities();
+		
+		Expression operand1 = new Operand(23);
+		Expression operand2 = new Operand(46);
+		Expression operand3 = new Operand(69);
+		Expression operand4 = new Operand(92);
+		Expression operator1 = new Operator('-');
+		Expression operator2 = new Operator('+');
+		Expression operator3 = new Operator('*');
+		
+		/* Create a postfix expression "23 46 - 69 92 * +" */
+		SLLNode<Expression> expression = 
+			new SLLNode<>(operand1, 
+			new SLLNode<>(operand2, 
+			new SLLNode<>(operator1,
+			new SLLNode<>(operand3, 
+			new SLLNode<>(operand4, 
+			new SLLNode<>(operator3, 
+			new SLLNode<>(operator2, null)))))));
+		
+		/* Expected to return a string storing the infix expression `(23 - 46) + (69 * 92)`
+		 * Notes: 
+		 * 	+ The parentheses here are meant to indicate the order of evaluation: they need to be stored in the output string.
+		 *  + For this task, we disregard operator precedences: always put a pair or parentheses to explicitly indicate the order of evaluation. 
+		 */
+		assertEquals("((23 - 46) + (69 * 92))", u.getInfixSequence(expression));
+		/* 
+		 * When the expression involves at least an operator, an outer-most pair of parentheses is to be included. 
+		 */
+	}
 	
 	/*
 	 * Jackie's suggestion: 

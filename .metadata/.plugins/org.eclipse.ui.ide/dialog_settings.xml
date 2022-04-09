@@ -8,13 +8,14 @@
 			<item value=""/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="D:\Users\panem\Documents\OneDrive - York University\Lassonde Engineering (OneDrive)\Lassonde Engineering\W22\EECS 2011\Source Code\EECS2011_W22_A3.zip"/>
 			<item value="D:\Users\panem\Documents\OneDrive - York University\Lassonde Engineering (OneDrive)\Lassonde Engineering\W22\EECS 2011\Source Code\EECS2011_W22_A2.zip"/>
 			<item value="D:\Users\panem\Documents\OneDrive - York University\Lassonde Engineering (OneDrive)\Lassonde Engineering\W22\EECS 2011\Source Code\EECS2011_W22_A1.zip"/>
 		</list>
 	</section>
 	<section name="ChooseWorkspaceDialogSettings">
-		<item key="DIALOG_X_ORIGIN" value="193"/>
-		<item key="DIALOG_Y_ORIGIN" value="767"/>
+		<item key="DIALOG_X_ORIGIN" value="392"/>
+		<item key="DIALOG_Y_ORIGIN" value="447"/>
 	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">

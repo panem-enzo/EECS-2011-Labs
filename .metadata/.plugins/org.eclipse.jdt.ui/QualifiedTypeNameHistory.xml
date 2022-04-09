@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="tests.SLLNode"/>
     <fullyQualifiedTypeName name="model.TreeUtilities"/>
+    <fullyQualifiedTypeName name="tests.Expression"/>
+    <fullyQualifiedTypeName name="tests.Operator"/>
 </qualifiedTypeNameHistroy>
